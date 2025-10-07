@@ -1,2 +1,2 @@
 # Binary-Search-Tree
-Implementation of a Binary Search Tree in C
+This project is done Implementation of a Binary Search Tree in C
