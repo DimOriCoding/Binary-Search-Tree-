@@ -331,8 +331,8 @@ void DELETE(tp *rt)
  }       
   
 
-void print_in_order(tp rt)// Μέσω αυτής της υπορουτίνας ,γίνεται διάσχιση του δέντρου(tree traversal)΄
-// και εκτυπώνονται τα στοιχεία του δέντρου με σειρά από το μικρότερο στο μεγαλύτερο.
+void print_in_order(tp rt)// This subroutine performs tree traversal
+// and prints the tree elements in ascending order.
 {
 	tp a;
 	a=rt;
@@ -351,6 +351,7 @@ void print_in_order(tp rt)// Μέσω αυτής της υπορουτίνας ,
           }
     }
 }
+
 
 
 
