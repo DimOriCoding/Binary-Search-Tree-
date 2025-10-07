@@ -82,9 +82,9 @@ void insert(tp *rt)
 	      t->left=NULL;
 	      t->right=NULL;
    	      printf("\n The AM of temp is %d \n", t->am);
-// Όταν το μόνο στοιχείο του δέντρου είναι η ρίζα του root, τότε αν το δεδομένο data(κλειδί) που εισάγουμε είναι μεγαλύτερο 
-//από το αντίστοιχο κλειδί της ρίζας τότε πηγαίνουμε στο αριστερό υπόδεντρο, αλλιώς στο δεξιό υπόδεντρο. 
-//Τα παιδιά right και left της νέας ρίζας θα δείχνουν στη τιμή NULL.
+// When the only element of the tree is the root, then if the data (key) we enter is greater 
+//than the corresponding key of the root, we go to the left subtree, otherwise to the right subtree. 
+//The right and left children of the new root will point to the NULL value.
    	       if((*rt!=NULL)&&((*rt)->left==NULL)&&((*rt)->right==NULL))
    	         {
    	          if((*rt)->am>t->am)
@@ -102,9 +102,9 @@ void insert(tp *rt)
                  t->parent=(*rt);
                }  
              }
-    // Στη περίπτωση που έχουμε ρίζα(root)με ένα δεξί(right)ή ένα αριστερό(left) παιδί(child),
-//τότε χρησιμοποιούμε έναν βοηθητικό δείκτη a που δείχνει στη ρίζα και τότε πάλι αν το δεδομένο data(κλειδί) που εισάγουμε είναι μεγαλύτερο 
-//από το αντίστοιχο κλειδί όπου δείχνει ο a τότε πηγαίνουμε στο αριστερό υπόδεντρο, αλλιώς στο δεξιό υπόδεντρο.
+    // In the case where we have a root with a right or left child,
+//then we use an auxiliary pointer a that points to the root, and then again, if the data (key) we enter is greater 
+//than the corresponding key where a points, then we go to the left subtree, otherwise to the right subtree.
    	      if(((*rt)!=NULL)&&(((*rt)->left!=NULL)||((*rt)->right!=NULL)))
             {
               a=(*rt);
@@ -132,8 +132,8 @@ void insert(tp *rt)
                 }
                }
             }
-  // Αν δεν υπάρχει δέντρο,τότε η ρίζα του δέντρου θα πάρει τη τιμή του δεδομένοy που ζητάμε να εισαχθεί, στο οποίο δείχνει ο δείκτης t.
-  //Τα παιδιά right και left της νέας ρίζας θα δείχνουν στη τιμή NULL.    
+  // If there is no tree, then the root of the tree will take the value of the data we want to insert, which is pointed to by the pointer t.
+  //The right and left children of the new root will point to the value NULL.    
    	        if((*rt)==NULL)
 	        {
 	         (*rt)=t;
@@ -141,9 +141,9 @@ void insert(tp *rt)
 	         (*rt)->right=NULL;
 	        }
 }
-void search(tp *rt)// Η υπορουτίνα void search(tp *rt) κάνει την αναζήτηση ενος στοιχείου στο δυαδικό δέντρο. Αν έχουμε ότι g=0,
-//τότε το στοιχείο βρέθηκε, αλλίως δεν υπάρχει. Αυτή η υπορουτίνα χρησιμοποιείται και στην υπορουτίνα void DELETE(tp *rt) 
-//για τη διαγραφή στοιχείου από το δυαδικό δέντρο.
+void search(tp *rt)// The void search(tp *rt) subroutine searches for an element in the binary tree. If we have g=0,
+//then the element was found, otherwise it does not exist. This subroutine is also used in the void DELETE(tp *rt) subroutine 
+//to delete an element from the binary tree.
 {
 	    tp a;
 	    int data,g;
@@ -208,11 +208,11 @@ void DELETE(tp *rt)
                printf("\n NOT FOUND");
              }
           }
-    if(q==0)// Το στοιχείο που ψάχνουμε βρέθηκε.Χρησιμοποιούμε ένα δείκτη a για να δείχνει στο στοιχείο(κόμβο) που βρήκαμε.
+    if(q==0)// The element we are looking for has been found. We use an index a to point to the element (node) we found.
     {
-    //Εάν ο κόμβος που βρήκαμε έχει δύο παιδιά, χωρίς να μας ενδιαφέρει αν είναι η ρίζα ή όχι, τότε για αυτόν τον κόμβο βρίσκουμε τον αμέσως 
-    //μεγαλύτερο διάδοχο(succesor), πηγαίνοντας στο δεξιό υπόδεντρο και διασχίζοντας το ύστερα αριστερά μέχρι να βρούμε το κόμβο 
-	//χωρίς αριστερό παιδί(child).Μετά βάζουμε αυτόν τον κόμβο σε αυτόν που θέλουμε να διαγράψουμε.
+    //If the node we found has two children, regardless of whether it is the root or not, then for this node we find the immediate 
+    //successor for this node by going to the right subtree and traversing it to the left until we find the node 
+    //without a left child. Then we put this node in the one we want to delete.
 		if((a->left!=NULL)&&(a->right!=NULL))
         {
           b=a->right;
@@ -226,7 +226,7 @@ void DELETE(tp *rt)
            a=b;
            
         }
-     // Όταν ο κόμβος που θέλουμε να διαγράψουμε δεν είναι η ρίζα root και δεν έχει παιδιά τότε απλώς τον κάνουμε free. 
+     // When the node we want to delete is not the root node and has no children, we simply make it free. 
 	 
 		 if(a!=(*rt))
    	    {
@@ -247,10 +247,10 @@ void DELETE(tp *rt)
               free(d->right);
              }
            }
-    //Aν όμως έχει δεξί(right) ή αριστερό(left)παιδί(child),τότε σε κάθε περίπτωση πρέπει ο πατέρας(parent) του κόμβου 
-	 //που θέλουμε να διαγράψουμενα δείχνει στο παιδί αυτού του κόμβου, και αντίστοιχα το παιδί αυτό να δείχνει 
-	 //στο πατέρα(parent) αυτού του κόμβου.Έτσι αφού ο πατέρας(parent) του κόμβου προς διαγραφή έχει ως παιδί(child) του 
-	 //το παιδί του κόμβου αυτού τότε κάνουμε free τον κόμβο οπού δείχνει ο δείκτης a.
+    //However, if it has a right or left child, then in any case the parent of the node 
+     //we want to delete must point to the child of that node, and correspondingly that child must point 
+	 //to the parent of this node. So, since the parent of the node to be deleted has as its child 
+     //the child of this node, we then free the node pointed to by the pointer a.
           else if(a->left!=NULL)  
          {
             c=a->parent;
@@ -294,15 +294,15 @@ void DELETE(tp *rt)
 		    }
 	     }
 	   
-	 // Όταν ο κόμβος που θέλουμε να διαγράψουμε είναι η ρίζα root και δεν έχει παιδιά τότε απλώς τον κάνουμε free. 
+	 // When the node we want to delete is the root node and has no children, we simply make it free. 
 	 if((a==(*rt))&&(a->left==NULL)&&(a->right==NULL))
          {
            free(a);
            (*rt)=NULL;
          }
-      //Aν όμως έχει δεξί(right) ή αριστερό(left)παιδί(child),τότε αυτό το παιδί γίνεται η νέα ρίζα(root) του δέντρου και σε κάθε περίπτωση πρέπει ο πατέρας(parent)του παιδιού του κόμβου 
-	 // προς διαγραφή, οπως και το παιδί αυτού του κόμβου, και αντίστοιχα το παιδί αυτό να δείχνει 
-	 //στη τιμή NULL.Τέλος κάνουμε free τον κόμβο οπού δείχνει ο δείκτης a.   
+      //However, if it has a right or left child, then that child becomes the new root of the tree, and in any case, the parent of the child node 
+	 // to be deleted, as well as the child of that node, and correspondingly that child must point 
+     //to the NULL value. Finally, we free the node pointed to by the pointer a.  
      if((a==(*rt))&&(a->right!=NULL))
          {
             (*rt)=a->right;
@@ -323,7 +323,7 @@ void DELETE(tp *rt)
          
    }
    
-    if((*rt)==NULL)// Στη περίπτωση αυτή δεν έχουμε δέντρο.
+    if((*rt)==NULL)//In this case, we do not have a tree.
    { 
     printf("\n THE TREE IS EMPTY");
    }
@@ -331,8 +331,8 @@ void DELETE(tp *rt)
  }       
   
 
-void print_in_order(tp rt)// Μέσω αυτής της υπορουτίνας ,γίνεται διάσχιση του δέντρου(tree traversal)΄
-// και εκτυπώνονται τα στοιχεία του δέντρου με σειρά από το μικρότερο στο μεγαλύτερο.
+void print_in_order(tp rt)// ΞΞ­ΟΟ Ξ±ΟΟΞ®Ο ΟΞ·Ο ΟΟΞΏΟΞΏΟΟΞ―Ξ½Ξ±Ο ,Ξ³Ξ―Ξ½Ξ΅ΟΞ±ΞΉ Ξ΄ΞΉΞ¬ΟΟΞΉΟΞ· ΟΞΏΟ Ξ΄Ξ­Ξ½ΟΟΞΏΟ(tree traversal)Ξ
+// ΞΊΞ±ΞΉ Ξ΅ΞΊΟΟΟΟΞ½ΞΏΞ½ΟΞ±ΞΉ ΟΞ± ΟΟΞΏΞΉΟΞ΅Ξ―Ξ± ΟΞΏΟ Ξ΄Ξ­Ξ½ΟΟΞΏΟ ΞΌΞ΅ ΟΞ΅ΞΉΟΞ¬ Ξ±ΟΟ ΟΞΏ ΞΌΞΉΞΊΟΟΟΞ΅ΟΞΏ ΟΟΞΏ ΞΌΞ΅Ξ³Ξ±Ξ»ΟΟΞ΅ΟΞΏ.
 {
 	tp a;
 	a=rt;
@@ -351,6 +351,7 @@ void print_in_order(tp rt)// Μέσω αυτής της υπορουτίνας ,γίνεται διάσχιση του δέ
           }
     }
 }
+
 
 
 
