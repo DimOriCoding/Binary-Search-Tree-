@@ -8,11 +8,12 @@ Regarding the nodes, a root node is the first or topmost node of a tree and has 
  
 
 
-In this project the following operations are implemented:
-  1)**Insertion**
-
-      A new key is always inserted at the leaf by maintaining the property of the binary search tree. We start searching for a key from the root until we hit a leaf node. 
-      Once a leaf node is found, the new node is added as a child of the leaf node. The below steps are followed while we try to insert a node into a binary search tree (**https://www.geeksforgeeks.org/dsa/insertion-in-binary-search-tree/**):
+In this project the following operations are implemented (**https://github.com/DimOriCoding/Binary-Search-Tree-/blob/main/Binary_Search_Tree.c**):
+  
+1)**Insertion** 
+  
+A new key is always inserted at the leaf by maintaining the property of the binary search tree. The searching for a key starts from the root until a leaf node is found. 
+Once a leaf node is found, the new node is added as a child of the leaf node. The below steps are followed in order to insert a node into a binary search tree (**https://www.geeksforgeeks.org/dsa/insertion-in-binary-search-tree/**):
            Initilize the current node (say, currNode or node) with root node
            Compare the key with the current node.
            Move left if the key is less than or equal to the current node value.
@@ -20,9 +21,28 @@ In this project the following operations are implemented:
            Repeat steps 2 and 3 until you reach a leaf node.
            Attach the new key as a left or right child based on the comparison with the leaf node's value.
 
-  2)**Searching**
+
+2)**Searching**
+  
+The searching algorithm for a node with a value X consists of the following steps (**https://www.geeksforgeeks.org/dsa/binary-search-tree-set-1-search-and-insertion/**):
+           Firstly if the value of the root node is NULL, the node is not existing
+           The value to be searched is compared with the value of the root. If it's equal the node is found if it's smaller the search continue to the left subtree because 
+           in a binary search tree all the elements in the left subtree are smaller and all the elements in the right subtree are larger. Repeat the above step till no more 
+           traversal is possible.
+           If at any iteration, key is found, return True. Else False.
 
   3)**Deletion**
+  
+  About Deletion operation there are 3 cases(**https://www.geeksforgeeks.org/dsa/deletion-in-binary-search-tree/**):
+
+  
+         1) Delete a leaf Node, where the node is simply removed from the tree. The parent node of the deleted node must have its corresponding child pointer set to NULL to reflect the change in the tree.
+         2) Delete a node with one children, where its child is promoted to replace the deleted node. The parent node of the deleted node must have its corresponding child pointer updated to point to the promoted child.
+         3) Delete a node with two children, where the replacement node can be found by either selecting the minimum value from the right subtree or the maximum value from the left subtree of the node to be deleted. After finding the replacement node, it can be promoted to replace the deleted node. The left subtree of the replacement node (if it exists) must be attached to the left child of the promoted node, and the right subtree of the replacement node (if it exists) must be attached to the right child of the promoted node. The parent node of the deleted node must have its corresponding child pointer updated to point to the promoted node.
+  The deletion of a root node falls under one of the above cases, depending on whether the root node has children or not.
+
+
 
   4)**In-Order Traversal**
+  This operation performs tree traversal with tree elements in ascending order. Firstly the traversal process is called recursively for the left subtree, then the root node is traversed and finally the traversal process is called recursively for the right subtree. 
 
